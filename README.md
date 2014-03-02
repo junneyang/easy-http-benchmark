@@ -10,9 +10,9 @@ a general benchmark test tool depends on tornado's feature of high-performance f
 * relatively perfect output of statistics and graphics    
     
 ### Dependencies:
-* tornado=》http://www.tornadoweb.org/en/stable/
-* matplotlib=》http://matplotlib.org/
-* numpy=》http://www.numpy.org/
+* tornado=>>http://www.tornadoweb.org/en/stable/
+* matplotlib=>>http://matplotlib.org/
+* numpy=>>http://www.numpy.org/
 
 ### Usage:
 * easyBenchmarkTesttool.py used for benchmark test,using python easyBenchmarkTesttool.py -h for help.    
