@@ -6,7 +6,7 @@ a general benchmark test tool depends on tornado's feature of high-performance f
 
 ### Feature:
 * this client test tool could easily achieve a high level of pressure with small count of CPU and memory resources.
-* with a small scale of source code,extension will be easy to achieve.
+* with a small scale of source code,extension of other protocol will be easy to achieve.
 * relatively perfect output of statistics and graphics
 
 ### Usage:
