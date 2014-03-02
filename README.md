@@ -17,7 +17,8 @@ a general benchmark test tool depends on tornado's feature of high-performance f
 ### Usage:
 * easyBenchmarkTesttool.py used for benchmark test,using python easyBenchmarkTesttool.py -h for help.    
 ![image](screenshot/helpinfo.png)     
-* easyBenchmarkStat.py used for log analysis,data statistics,and the plot of QPS.    
+* easyBenchmarkStat.py used for log analysis,data statistics,and the plot of QPS.   
+* consideration the output log is relatively large by default,long time stress or stablity test is not recommended with this tool.
 
 ### Screenshots:    
 **screenshot of benchmark test tool running:**
