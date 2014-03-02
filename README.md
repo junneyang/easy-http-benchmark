@@ -9,6 +9,20 @@ a general benchmark test tool depends on tornado's feature of high-performance f
 * with a small scale of source code,extension will be easy to achieve.
 * relatively perfect output of statistics and graphics
 
+### Usage:
+* easyBenchmarkTesttool.py used for benchmark test,python easyBenchmarkTesttool.py -h for help.    
+![image](screenshot/helpinfo.png)     
+* easyBenchmarkStat.py used for log analysis,data statistics,and the plot of QPS.    
+    
+**screenshot of benchmark test tool running:**
+![image](screenshot/Benchmark_Start.png)    
+
+**screenshot of log analysis,data statistics:**
+![image](screenshot/loganalysis.png)     
+
+**plot of period distributed query:**
+![image](screenshot/query_period_distribution_plot.png)  
+
 **test result of one http server:** 
 ![image](screenshot/UnderTest-PressureToLimit.png)    
 
@@ -16,4 +30,8 @@ a general benchmark test tool depends on tornado's feature of high-performance f
 
 **resource used of this tool:**  
 ![image](screenshot/Benchmark-Testtool-CPU-Memory-Resource.png)
+
+### Kindly Reminder:
+If any questions, please contact JunneYang yangjun03@baidu.com.
+
 
