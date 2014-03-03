@@ -21,21 +21,21 @@ a general benchmark test tool depends on tornado's feature of high-performance f
 * consideration the output log is relatively large by default,long time stress or stablity test is not recommended with this tool,log output optional will be supported soon.
 
 ### Screenshots:    
-**screenshot of benchmark test tool running:**
+**1.screenshot of benchmark test tool running:**
 ![image](screenshot/Benchmark_Start.png)    
 
-**screenshot of log analysis,data statistics:**
+**2.screenshot of log analysis,data statistics:**
 ![image](screenshot/loganalysis.png)     
 
-**plot of period distributed query:**
+**3.plot of period distributed query:**
 ![image](screenshot/query_period_distribution_plot.png)  
 
-**test result of one http server:** 
+**4.test result of one http server:** 
 ![image](screenshot/UnderTest-PressureToLimit.png)    
 
 ![image](screenshot/UnderTest -Stat.png)
 
-**resource used of this tool:**  
+**5.resource used of this tool:**  
 ![image](screenshot/Benchmark-Testtool-CPU-Memory-Resource.png)
 
 ### Kindly Reminder:
