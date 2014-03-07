@@ -14,7 +14,8 @@ import lib.EMailLib
 ConfFilePath=u"./conf/easyBenchmarkTestTool.conf"
 ConfFile=json.load(open(ConfFilePath, "r"),encoding='utf-8')
 response_period_distribution_statfile=u"./stat/easyBenchmarkTestTool.stat"
-img_file_list=["./img/query_period_distribution_plot.png","./img/query_period_distribution_plot.png","./img/query_period_distribution_plot.png"],
+img_file_save=["./img/query_period_distribution_plot","./img/query_period_distribution_plot","./img/query_period_distribution_plot"]
+img_file_list=[file+".png" for file in img_file_save]
 
 class easyBenchmarkStat(object):
     def get_totalrequest(self):
@@ -128,7 +129,7 @@ if __name__ == "__main__":
     response_period_distribution=easyBenchmarkStat.get_response_period_distribution()
     easyBenchmarkStat.get_query_period_distribution_plot()
     print("*"*80)
-    print("log analysis completed,period distribution plot of query:./img/query_period_distribution_plot.png")
+    print("log analysis completed,curve of performance test at the directory of ./img/")
 
     lib.EMailLib.Sendmail_Textreport(version=ConfFile['version'],content_sub=u" 性能自动化测试报告",from_mail_addr=ConfFile['from_mail_addr'],
 to_mail_addr=ConfFile['to_mail_addr'],server=ConfFile['server'],img_description_list=[u"QPS(query per second)曲线:",u"CPU_IDLE曲线",u"内存占用曲线"],
