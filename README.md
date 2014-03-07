@@ -8,7 +8,12 @@ http protocol of get and post is supported by current version,the project is sti
 ### Feature:
 * this client test tool could easily reach a high level of pressure with small count of CPU and memory resources.
 * with a small scale of source code,extension of other protocol will be easy to achieve.
-* relatively perfect output of statistics and graphics    
+* relatively perfect output of statistics and graphics.
+* automatic mail sending supported.
+
+### UpdateRecords:
+* 1.0——base version.
+* 1.1——add the feature of automatic mail sending.
     
 ### Dependencies:
 * tornado=>>http://www.tornadoweb.org/en/stable/
@@ -40,6 +45,6 @@ http protocol of get and post is supported by current version,the project is sti
 ![image](screenshot/Benchmark-Testtool-CPU-Memory-Resource.png)
 
 ### Kindly Reminder:
-If any questions, please contact JunneYang yangjun03@baidu.com.
+If any questions, please contact JunneYang 597092663@qq.com.
 
 
