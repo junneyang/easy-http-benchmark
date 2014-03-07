@@ -7,6 +7,7 @@ import datetime
 import matplotlib.pyplot as plt
 import numpy
 import math
+import pytz
 from matplotlib.dates import DayLocator, HourLocator, DateFormatter, drange
 
 import lib.EMailLib
@@ -81,11 +82,12 @@ class easyBenchmarkStat(object):
             dateList.append(temp[0])
 
         t=time.strptime(dateList[0], "%Y-%m-%d %H:%M")
-        startDate = datetime.datetime(t.tm_year,t.tm_mon,t.tm_mday,t.tm_hour,t.tm_min,t.tm_sec)
-        t=time.strptime(dateList[-1], "%Y-%m-%d %H:%M")
-        endDate = datetime.datetime(t.tm_year,t.tm_mon,t.tm_mday,t.tm_hour,t.tm_min,t.tm_sec)
-        delta = datetime.timedelta(minutes=1)
-        dates = drange(startDate , endDate, delta)
+        startDate = time.mktime(t)
+        t=time.strptime(dateList[len(dateList)-1], "%Y-%m-%d %H:%M")
+        endDate = time.mktime(t)
+        timestamps=numpy.linspace(startDate,endDate,len(yList))
+        est=pytz.timezone('US/Eastern')
+        dates=[datetime.datetime.fromtimestamp(ts,est) for ts in timestamps]
         ax.plot_date(dates,  yList,  'm-',  marker='.',  linewidth=1)
 
         xaxis.set_major_formatter( DateFormatter('%Y-%m-%d %H:%M') )
