@@ -130,6 +130,7 @@ if __name__ == "__main__":
     easyBenchmarkStat.get_query_period_distribution_plot()
     print("*"*80)
     print("log analysis completed,curve of performance test at the directory of ./img/")
+    print("please pay attention to your mail of this benchmark test")
 
     lib.EMailLib.Sendmail_Textreport(version=ConfFile['version'],content_sub=u" 性能自动化测试报告",from_mail_addr=ConfFile['from_mail_addr'],
 to_mail_addr=ConfFile['to_mail_addr'],server=ConfFile['server'],img_description_list=[u"QPS(query per second)曲线:",u"CPU_IDLE曲线",u"内存占用曲线"],
