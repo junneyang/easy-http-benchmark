@@ -9,10 +9,12 @@ import numpy
 import math
 from matplotlib.dates import DayLocator, HourLocator, DateFormatter, drange
 
+import lib.EMailLib
+
 ConfFilePath=u"./conf/easyBenchmarkTestTool.conf"
 ConfFile=json.load(open(ConfFilePath, "r"),encoding='utf-8')
 response_period_distribution_statfile=u"./stat/easyBenchmarkTestTool.stat"
-img_save_path=u"./img/query_period_distribution_plot"
+img_file_list=["./img/query_period_distribution_plot.png","./img/query_period_distribution_plot.png","./img/query_period_distribution_plot.png"],
 
 class easyBenchmarkStat(object):
     def get_totalrequest(self):
@@ -88,7 +90,7 @@ class easyBenchmarkStat(object):
         xaxis.set_major_formatter( DateFormatter('%Y-%m-%d %H:%M') )
         ax.fmt_xdata = DateFormatter('%Y-%m-%d %H:%M')
         fig.autofmt_xdate()
-        plt.savefig(img_save_path)
+        plt.savefig(img_file_list[0])
 
 
 if __name__ == "__main__":
@@ -96,20 +98,40 @@ if __name__ == "__main__":
     print(u"log analysis in progress,please wait a moment...")
     easyBenchmarkStat=easyBenchmarkStat()
     starttime,starttimestamp=easyBenchmarkStat.get_starttime()
-    print("starttime:"+str(starttime))
+    #开始时间获取
+    starttime=str(starttime)
+    print("starttime:"+starttime)
     endtime,endtimestamp=easyBenchmarkStat.get_endtime()
+    #结束时间获取
+    endtime=str(endtime)
     print("endtime:"+str(endtime))
-    print("timeelapsed:"+str(endtimestamp-starttimestamp))
+    #测试时间
+    timeelapsed=str(endtimestamp-starttimestamp)
+    print("timeelapsed:"+timeelapsed)
 
+    #总请求数
     totalrequest=easyBenchmarkStat.get_totalrequest()
     print("totalrequest:"+totalrequest)
+    #总回应数
     totalresponse=easyBenchmarkStat.get_totalresponse()
-    print("totalresponse:"+totalresponse+"\t\t"+"responserate:%0.3f%%" %((float(totalresponse)/float(totalrequest))*100))
+    #应答率
+    responserate="%0.3f%%" %((float(totalresponse)/float(totalrequest))*100)
+    print("totalresponse:"+totalresponse+"\t\t"+"responserate:"+responserate)
+    #错误数
     totalerror=easyBenchmarkStat.get_totalerror()
-    print("totalerror:"+totalerror+"\t\t\t"+"errorrate:%0.3f%%" %((float(totalerror)/float(totalresponse))*100))
-    print("QPS(query per second):"+str(int(totalresponse)/int(endtimestamp-starttimestamp)))
+    #错误率
+    errorrate="%0.3f%%" %((float(totalerror)/float(totalresponse))*100)
+    print("totalerror:"+totalerror+"\t\t\t"+"errorrate:"+errorrate)
+    #QPS
+    QPS=str(int(totalresponse)/int(endtimestamp-starttimestamp))
+    print("QPS(query per second):"+QPS)
     response_period_distribution=easyBenchmarkStat.get_response_period_distribution()
     easyBenchmarkStat.get_query_period_distribution_plot()
     print("*"*80)
     print("log analysis completed,period distribution plot of query:./img/query_period_distribution_plot.png")
+
+    lib.EMailLib.Sendmail_Textreport(version=ConfFile['version'],content_sub=u" 性能自动化测试报告",from_mail_addr=ConfFile['from_mail_addr'],
+to_mail_addr=ConfFile['to_mail_addr'],server=ConfFile['server'],img_description_list=[u"QPS(query per second)曲线:",u"CPU_IDLE曲线",u"内存占用曲线"],
+img_file_list=img_file_list,starttime=starttime,endtime=endtime,timeelapsed=timeelapsed,
+totalrequest=totalrequest,totalresponse=totalresponse,responserate=responserate,totalerror=totalerror,errorrate=errorrate,QPS=QPS)
 
