@@ -40,6 +40,6 @@ http protocol of get and post is supported by current version,the project is sti
 ![image](screenshot/Benchmark-Testtool-CPU-Memory-Resource.png)
 
 ### Kindly Reminder:
-If any questions, please contact JunneYang yangjun03@baidu.com.
+If any questions, please contact JunneYang 597092663@qq.com.
 
 
