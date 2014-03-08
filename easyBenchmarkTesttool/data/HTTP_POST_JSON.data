@@ -1,7 +1,7 @@
 {	"PROTOCOL_TYPE":"HTTP_POST_JSON",
 	"URL":"http://10.81.12.112:18080/lbs/da/openservice",
 	"HEADERS":{"Content-type":"application/json"},
-	"_BODY":"如下BODY列表表示消息发送时随机读取",
+	"_BODY":"BODY列表表示消息发送时随机读取，可以只配置一个",
 	"BODY":[{
 		"service": "ItemService",
 		"method": "GetItemsByItem",
@@ -13,19 +13,6 @@
 		},
 		"algorithmId": "topic_rev_poi",
 		"item_ids": ["9977193541978760286"]
-		}
-	},
-	{
-		"service": "ItemService",
-		"method": "GetItemsByItem",
-		"request": {
-		"header": {
-				"subservice":"sub",
-				"secretkey": "pass",
-				"servicekey": "key1"
-		},
-		"algorithmId": "topic_rev_poi",
-		"item_ids": ["9977193541978760286","9977193541978760286","9977193541978760286"]
 		}
 	}],
 	"_EXP_DATA":"期望返回值，可不配置，默认只校验数据返回，不校验返回是否正确",

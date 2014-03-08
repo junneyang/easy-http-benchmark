@@ -27,7 +27,10 @@ class easyBenchmarkTesttool(object):
             url=self.DataFile["URL"]
             headers=self.DataFile["HEADERS"]
             body=self.DataFile["BODY"]
-            body=random.choice(body)
+            if(len(body)==1):
+                body=body[0]
+            else:
+                body=random.choice(body)
             body=json.JSONEncoder().encode(body)
             httprequest_post = tornado.httpclient.HTTPRequest(url=url,
             headers=headers,method="POST",body=body,connect_timeout=self.DataFile["CONNECTION_TMOUT"],request_timeout=self.DataFile["REQUEST_TMOUT"])
@@ -35,7 +38,10 @@ class easyBenchmarkTesttool(object):
             return httprequest_post
         elif(self.DataFile["PROTOCOL_TYPE"] == u"HTTP_GET"):
             url=self.DataFile["URL"]
-            url=random.choice(url)
+            if(len(url)==1):
+                url=url[0]
+            else:
+                url=random.choice(url)
             httprequest_get=tornado.httpclient.HTTPRequest(url=url,
             connect_timeout=self.DataFile["CONNECTION_TMOUT"],request_timeout=self.DataFile["REQUEST_TMOUT"])
             logging.info(u"Send New Request")

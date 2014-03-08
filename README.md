@@ -14,6 +14,7 @@ http protocol of get and post is supported by current version,the project is sti
 ### UpdateRecords:
 * 1.0——base version.
 * 1.1——add the feature of automatic mail sending.
+* 1.2——add the feature of random request.
     
 ### Dependencies:
 * tornado=>>http://www.tornadoweb.org/en/stable/
