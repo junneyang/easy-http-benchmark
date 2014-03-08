@@ -15,22 +15,22 @@ import lib.EMailLib
 ConfFilePath=u"./conf/easyBenchmarkTestTool.conf"
 ConfFile=json.load(open(ConfFilePath, "r"),encoding='utf-8')
 response_period_distribution_statfile=u"./stat/easyBenchmarkTestTool.stat"
-img_file_save=["./img/query_period_distribution_plot","./img/query_period_distribution_plot","./img/query_period_distribution_plot"]
+img_file_save=["./img/query_period_distribution_plot","./img/server_cpu_idle_plot","./img/server_memory_usage_plot"]
 img_file_list=[file+".png" for file in img_file_save]
 
 class easyBenchmarkStat(object):
     def get_totalrequest(self):
-        cmdstr="""grep 'Send' log/*.log | awk -F']' '{ print $2,$3 }' | awk -F'[' '{ print $2,$3 }' | wc -l"""
+        cmdstr="""grep 'Send' log/*.log | wc -l"""
         status,output=commands.getstatusoutput(cmdstr)
         if(status == 0):
             return output
     def get_totalresponse(self):
-        cmdstr="""grep 'Recv' log/*.log | awk -F']' '{ print $2,$3 }' | awk -F'[' '{ print $2,$3 }' | wc -l"""
+        cmdstr="""grep 'Recv' log/*.log | wc -l"""
         status,output=commands.getstatusoutput(cmdstr)
         if(status == 0):
             return output
     def get_totalerror(self):
-        cmdstr="""grep 'ERROR' log/*.log | awk -F']' '{ print $2,$3 }' | awk -F'[' '{ print $2,$3 }' | wc -l"""
+        cmdstr="""grep 'ERROR' log/*.log | wc -l"""
         status,output=commands.getstatusoutput(cmdstr)
         if(status == 0):
             return output
@@ -110,7 +110,7 @@ if __name__ == "__main__":
     print("endtime:"+str(endtime))
     #测试时间
     timeelapsed=str(endtimestamp-starttimestamp)
-    print("timeelapsed:"+timeelapsed)
+    print("timeelapsed(s):"+timeelapsed)
 
     #总请求数
     totalrequest=easyBenchmarkStat.get_totalrequest()
@@ -128,6 +128,9 @@ if __name__ == "__main__":
     #QPS
     QPS=str(int(totalresponse)/int(endtimestamp-starttimestamp))
     print("QPS(query per second):"+QPS)
+    #平均延迟时间
+    latency="%0.3f" %(float(1000)/float(QPS))
+    print("Latency(ms):"+latency)
     response_period_distribution=easyBenchmarkStat.get_response_period_distribution()
     easyBenchmarkStat.get_query_period_distribution_plot()
     print("*"*80)
@@ -137,5 +140,5 @@ if __name__ == "__main__":
     lib.EMailLib.Sendmail_Textreport(version=ConfFile['version'],content_sub=u" 性能自动化测试报告",from_mail_addr=ConfFile['from_mail_addr'],
 to_mail_addr=ConfFile['to_mail_addr'],server=ConfFile['server'],img_description_list=[u"QPS(query per second)曲线:",u"CPU_IDLE曲线",u"内存占用曲线"],
 img_file_list=img_file_list,starttime=starttime,endtime=endtime,timeelapsed=timeelapsed,
-totalrequest=totalrequest,totalresponse=totalresponse,responserate=responserate,totalerror=totalerror,errorrate=errorrate,QPS=QPS)
+totalrequest=totalrequest,totalresponse=totalresponse,responserate=responserate,totalerror=totalerror,errorrate=errorrate,QPS=QPS,latency=latency)
 

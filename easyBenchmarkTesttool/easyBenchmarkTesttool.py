@@ -8,6 +8,7 @@ import logging
 import json
 import time
 import os
+import random
 ConfFilePath=u"./conf/easyBenchmarkTestTool.conf"
 
 class easyBenchmarkTesttool(object):
@@ -27,12 +28,14 @@ class easyBenchmarkTesttool(object):
             headers=self.DataFile["HEADERS"]
             body=self.DataFile["BODY"]
             body=json.JSONEncoder().encode(body)
+            body=random.choice(body)
             httprequest_post = tornado.httpclient.HTTPRequest(url=url,
             headers=headers,method="POST",body=body,connect_timeout=self.DataFile["CONNECTION_TMOUT"],request_timeout=self.DataFile["REQUEST_TMOUT"])
             logging.info(u"Send New Request")
             return httprequest_post
         elif(self.DataFile["PROTOCOL_TYPE"] == u"HTTP_GET"):
             url=self.DataFile["URL"]
+            url=random.choice(url)
             httprequest_get=tornado.httpclient.HTTPRequest(url=url,
             connect_timeout=self.DataFile["CONNECTION_TMOUT"],request_timeout=self.DataFile["REQUEST_TMOUT"])
             logging.info(u"Send New Request")

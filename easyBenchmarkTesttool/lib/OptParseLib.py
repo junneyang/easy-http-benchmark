@@ -6,7 +6,7 @@ import json
 
 class OptParseLib(object):
     def parse_args(self):
-        usage=u"""%prog [options] datafile
+        usage=u"""python %prog [options] datafile
         datafile——request data file,need to configue as filename under the directory of data whitin this project.
         easyily run this program like this:
         python %prog -p 0 -c 500 -t 2 HTTP_POST_JSON.data"""
