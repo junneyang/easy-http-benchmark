@@ -20,8 +20,16 @@ totalrequest='4987873',totalresponse='4981873',responserate='99.880%',totalerror
     body_content+=u"""</span>"""
     body_content+=content_sub
     body_content+="""</b></p>"""
+    body_content+="""
+    <style type="text/css">
+    a:link {color:red; text-decoration:underline;}
+    a:hover {color:red; text-decoration:underline;}
+    a:active:{color:red; text-decoration:underline;}
+    a:visited {color:red; text-decoration:underline;}
+    </style>
+    """
     body_content+=u"""<p style='font-family:微软雅黑;font-size:12px;font-style:italic;text-align:right;margin-right:50%'>"""
-    body_content+=u"@easyBenchmarkTesttool 2014"
+    body_content+=u"<a href='https://github.com/JunneYang/easyBenchmarkTesttool'>@easyBenchmarkTesttool</a> 2014"
     body_content+="""</p>"""
     body_content+=u"""
     <style type="text/css">
