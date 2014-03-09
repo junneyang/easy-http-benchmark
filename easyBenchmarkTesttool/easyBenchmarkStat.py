@@ -138,7 +138,7 @@ if __name__ == "__main__":
     print("please pay attention to your mail of this benchmark test")
 
     lib.EMailLib.Sendmail_Textreport(version=ConfFile['version'],content_sub=u" 性能自动化测试报告",from_mail_addr=ConfFile['from_mail_addr'],
-to_mail_addr=ConfFile['to_mail_addr'],server=ConfFile['server'],img_description_list=[u"QPS(query per second)曲线:",u"CPU_IDLE曲线",u"内存占用曲线"],
+to_mail_addr=ConfFile['to_mail_addr'],server=ConfFile['server'],img_description_list=[u"QPS(query per second)曲线:",u"CPU_IDLE曲线(努力支持中...)",u"内存占用曲线(努力支持中...)"],
 img_file_list=img_file_list,starttime=starttime,endtime=endtime,timeelapsed=timeelapsed,
 totalrequest=totalrequest,totalresponse=totalresponse,responserate=responserate,totalerror=totalerror,errorrate=errorrate,QPS=QPS,latency=latency)
 
