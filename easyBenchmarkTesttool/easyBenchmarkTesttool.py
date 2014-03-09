@@ -55,10 +55,6 @@ class easyBenchmarkTesttool(object):
         self._io_loop.start()
 
     def handle_request(self,response):
-        if time.time()>self.end:
-            self._client.close()
-            self._io_loop.stop()
-            return
         if(self.DataFile["PROTOCOL_TYPE"] == u"HTTP_POST_JSON" or self.DataFile["PROTOCOL_TYPE"] == u"HTTP_GET"):
             self.ret=response.body
             #print self.ret
@@ -67,6 +63,10 @@ class easyBenchmarkTesttool(object):
             if(self.ret != self.DataFile["EXP_DATA"]):
                 logging.info(u"ERROR Response")'''
             logging.info(u"Recv New Response")
+        if time.time()>self.end:
+            self._client.close()
+            self._io_loop.stop()
+            return
 
         self._client.fetch(self.get_request(), self.handle_request)
 
