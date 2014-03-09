@@ -7,7 +7,7 @@ from email.mime.image import MIMEImage
 import smtplib
 
 def Sendmail_Textreport(version=u"UPPS-1.0.9.0",content_sub=u" 性能自动化测试报告",from_mail_addr="yangjun03@baidu.com",
-to_mail_addr="yangjun03@baidu.com",server="mail2-in.baidu.com",img_description_list=[u"QPS(query per second)曲线:",u"CPU_IDLE曲线(努力支持中...)",u"内存占用曲线(努力支持中...)"],
+to_mail_addr="yangjun03@baidu.com,linqiaoying@baidu.com,yangjun03@baidu.com",server="mail2-in.baidu.com",img_description_list=[u"QPS(query per second)曲线:",u"CPU_IDLE曲线(努力支持中...)",u"内存占用曲线(努力支持中...)"],
 img_file_list=["../img/query_period_distribution_plot.png","../img/server_cpu_idle_plot.png","../img/server_memory_usage_plot.png"],
 starttime='2014-03-02 06:31:44',endtime='2014-03-02 06:41:44',timeelapsed='600.0',
 totalrequest='4987873',totalresponse='4981873',responserate='99.880%',totalerror='0',errorrate='0.000%',QPS='8303',latency='5'):
