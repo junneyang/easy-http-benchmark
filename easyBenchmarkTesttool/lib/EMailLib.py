@@ -35,7 +35,7 @@ totalrequest='4987873',totalresponse='4981873',responserate='99.880%',totalerror
     <style type="text/css">
     #ID_Tbl_Summary{
     	background-color: #e5e5e5;
-    	margin-right:15%;
+    	#margin-right:15%;
     	margin-left:0;
 
     	border-style:solid;
