@@ -26,6 +26,8 @@ http protocol of get and post is supported by current version,the project is sti
 ![image](screenshot/helpinfo.png)     
 * easyBenchmarkStat.py used for log analysis,data statistics,and the plot of QPS.   
 * consideration the output log is relatively large by default,long time stress or stablity test is not recommended with this tool,log output optional will be supported soon.
+* one click service for completely automatic benchmarktest and mail sending supported like this:
+![image](screenshot/automatic_testrunner.png)
 
 ### Screenshots:    
 **1.screenshot of benchmark test tool running:**
