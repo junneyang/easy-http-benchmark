@@ -51,6 +51,10 @@ http protocol of get and post is supported by current version,the project is sti
 **6.the feature of automatic sending mail:**  
 ![image](screenshot/mail_sending_feature.png)
 
+**7.a serious problem found by benchmark test is illustrated as followed,the QPS plot is abnormal suddenly,and the core file is generated as well:**  
+![image](screenshot/QPS_plot_abnormal.png)    
+![image](screenshot/core_file.png)  
+
 
 ### Kindly Reminder:
 If any questions, please contact JunneYang 597092663@qq.com.
