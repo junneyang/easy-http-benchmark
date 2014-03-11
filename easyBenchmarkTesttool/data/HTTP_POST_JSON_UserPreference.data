@@ -13,8 +13,8 @@
 		},
 		"cuid": "fed3641138107dca4c101fd70fa96979",
 		"srcType": ["MAP_CATEGORY","TUANGOU_PRICE"],
-		"include_tag":[u"医疗",u"建材市场"],
-		"exclude_tag":[u"体检中心",u"文具店"]
+		"include_tag":["医疗","建材市场"],
+		"exclude_tag":["体检中心","文具店"]
 		}
 	}],
 	"_EXP_DATA":"期望返回值，可不配置，默认只校验数据返回，不校验返回是否正确",
