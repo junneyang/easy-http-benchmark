@@ -1,0 +1,7 @@
+{	"PROTOCOL_TYPE":"RedisProtocol",
+    "HOST":"10.81.12.112",
+    "PORT":16379,
+    "SELECTED_DB":0,
+    "RANDOM_DATA":[{"x":"123455","y":"654320"}]
+}
+
