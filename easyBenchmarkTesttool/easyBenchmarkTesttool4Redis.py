@@ -9,28 +9,35 @@ import json
 import time
 import os
 import random
+import numpy
+from lib.randomList import getRandomData
 
 import brukva
 ConfFilePath=u"./conf/easyBenchmarkTestTool.conf"
+filepath="./data/testData.txt"
+RANDOM_DATA=getRandomData(filepath)
 
 class easyBenchmarkTesttool(object):
     def __init__(self,ClientNUM,TEST_TIME,DataFile):
         self.ClientNUM=ClientNUM
         self.TEST_TIME=TEST_TIME
         self.DataFile=DataFile
-        self.RANDOM_DATA=DataFile['RANDOM_DATA']
         assert(self.DataFile["PROTOCOL_TYPE"] == u"RedisProtocol")
 
         self._client=brukva.Client(host=DataFile['HOST'], port=DataFile['PORT'],selected_db=DataFile['SELECTED_DB'])
         self._client.connect()
         self._io_loop = self._client.connection._stream.io_loop
+    def get_request(self):
+        index=random.randrange(0,9988)
+        data=RANDOM_DATA[index]
+        x=data['x']
+        y=data['y']
+        logging.info(u"Send New Request")
+        self._client.execute_command("GEOSEARCH", self.handle_request, "allpoi" ,"MERCATOR", x, y, "RADIUS","1000","WITHCOORDINATES","WITHDISTANCES")
 
     def benchmark_test(self):
         for i in xrange(self.ClientNUM):
-            data=random.choice(self.RANDOM_DATA)
-            x=data['x']
-            y=data['y']
-            self._client.execute_command("GEOSEARCH", on_result, "allpoi" ,"MERCATOR", x, y, "RADIUS","1000","WITHCOORDINATES","WITHDISTANCES")
+            self.get_request()
         self.start=time.time()
         self.end=self.start+self.TEST_TIME*60
         self._io_loop.start()
@@ -41,14 +48,12 @@ class easyBenchmarkTesttool(object):
         assert(self.ret)
         logging.info(u"Recv New Response")
         if time.time()>self.end:
-            self._client.close()
+            self._client.disconnect()
             self._io_loop.stop()
             return
 
-        data=random.choice(self.RANDOM_DATA)
-        x=data['x']
-        y=data['y']
-        self._client.execute_command("GEOSEARCH", on_result, "allpoi" ,"MERCATOR", x, y, "RADIUS","1000","WITHCOORDINATES","WITHDISTANCES")
+        self.get_request()
+
 
 def main():
     options,DataFile=OptParseLib().parse_args()
@@ -67,4 +72,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 
