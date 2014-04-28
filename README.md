@@ -10,7 +10,7 @@ http protocol of get and post is supported by current version,the project is sti
 * with a small scale of source code,extension of other protocol will be easy to achieve.
 * relatively perfect output of statistics and graphics.
 * automatic mail sending supported.
-* http,redis protocol supported in the current version.
+* http,redis protocol supported in the current version(not available currently).
 
 ### UpdateRecords:
 * 1.0——base version.
