@@ -1,4 +1,4 @@
-easyBenchmarkTesttool
+easybenchmarktesttool
 =====================
 
 ### Introduction:
